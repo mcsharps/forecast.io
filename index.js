@@ -15,7 +15,7 @@ ForecastError.prototype.toString = function toString (){
 }
 
 function Forecast () {
-  var optionsPath = "./data/forecast_config";
+  var optionsPath = "../data/forecast_config";
   var options = fs.readFileSync(optionsPath, {encoding: 'utf-8'});
   options = JSON.parse(options);
   if ( ! options) throw new ForecastError('APIKey must be set on Forecast options');
