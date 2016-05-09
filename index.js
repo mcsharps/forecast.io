@@ -2,7 +2,7 @@ var log = require('debug')('forecast.io'),
     request = require('request'),
     util = require('util'),
     qs = require('querystring');
-
+    fs = require('fs');
 function ForecastError (errors) {
   Error.captureStackTrace(this, ForecastError);
   this.errors = errors;
@@ -14,7 +14,9 @@ ForecastError.prototype.toString = function toString (){
   return "ForecastError: " + this.errors;
 }
 
-function Forecast (options) {
+function Forecast () {
+  var options = fs.readFileSync(optionsPath, {encoding: 'utf-8'});
+  options = JSON.parse(options);
   if ( ! options) throw new ForecastError('APIKey must be set on Forecast options');
   if ( ! options.APIKey) throw new ForecastError('APIKey must be set on Forecast options');
   this.APIKey = options.APIKey;
