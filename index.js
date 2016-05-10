@@ -15,14 +15,13 @@ ForecastError.prototype.toString = function toString (){
 }
 
 function Forecast () {
-  var optionsPath = "./data/forecast_config";
-  var options = fs.readFileSync(optionsPath, {encoding: 'utf-8'});
+ var options = process.env;
   options = JSON.parse(options);
   if ( ! options) throw new ForecastError('APIKey must be set on Forecast options');
   if ( ! options.APIKey) throw new ForecastError('APIKey must be set on Forecast options');
-  this.APIKey = options.APIKey;
-  this.requestTimeout = options.timeout || 2500
-  this.url = 'https://api.forecast.io/forecast/' + options.APIKey + '/';
+  this.APIKey = options.forecastAPIKey;
+  this.requestTimeout = 1000 || 2500
+  this.url = 'https://api.forecast.io/forecast/' + options.forecastAPIKey + '/';
 }
 
 
