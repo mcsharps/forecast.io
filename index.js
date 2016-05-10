@@ -16,7 +16,7 @@ ForecastError.prototype.toString = function toString (){
 
 function Forecast () {
  var options = process.env;
-  options = JSON.parse(options);
+ // options = JSON.parse(options);
   if ( ! options) throw new ForecastError('APIKey must be set on Forecast options');
   if ( ! options.APIKey) throw new ForecastError('APIKey must be set on Forecast options');
   this.APIKey = options.forecastAPIKey;
