@@ -18,7 +18,7 @@ function Forecast () {
  var options = process.env;
  // options = JSON.parse(options);
   if ( ! options) throw new ForecastError('APIKey must be set on Forecast options');
-  if ( ! options.APIKey) throw new ForecastError('APIKey must be set on Forecast options');
+  if ( ! options.forecastAPIKey) throw new ForecastError('APIKey must be set on Forecast options');
   this.APIKey = options.forecastAPIKey;
   this.requestTimeout = 1000 || 2500
   this.url = 'https://api.forecast.io/forecast/' + options.forecastAPIKey + '/';
